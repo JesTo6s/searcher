@@ -1,11 +1,13 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import logging
+import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackQueryHandler, Filters
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
-TOKEN = 'TOKEN'  # replace with your bot token
+TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN") 
+# TOKEN = 'TOKEN'  # replace with your bot token
 
 def start(update, context):
     buttons = [[InlineKeyboardButton("Option 1", callback_data='1'), InlineKeyboardButton("Option 2", callback_data='2')]]
